@@ -1,0 +1,19 @@
+services:
+  quiz:
+    build: .
+    image: where-and-when:latest
+    ports:
+      - "8080:8080"
+    environment:
+      # Set a long random value to allow DELETE /api/scores/<id> for moderation
+      ADMIN_TOKEN: ""
+      # Set to 1 when running behind a reverse proxy that sends X-Forwarded-For
+      TRUST_PROXY: ""
+      # New scores allowed per IP address per 10 minutes
+      RATE_LIMIT: "60"
+    volumes:
+      - scores:/data
+    restart: unless-stopped
+
+volumes:
+  scores:
