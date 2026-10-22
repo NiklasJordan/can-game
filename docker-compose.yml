@@ -3,7 +3,7 @@ services:
     build: .
     image: where-and-when:latest
     ports:
-      - "8080:8080"
+      - "3099:3099"
     environment:
       # Set a long random value to allow DELETE /api/scores/<id> for moderation
       ADMIN_TOKEN: ""
